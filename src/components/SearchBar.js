@@ -1,5 +1,7 @@
 import React from 'react';
-import { TextField, FormControl  } from '@material-ui/core';
+import { TextField  } from '@material-ui/core';
+// import FormControl from '@material-ui/core/FormControl';
+
 class SearchBar extends React.Component{
     state = {
         term : ''
@@ -9,11 +11,12 @@ class SearchBar extends React.Component{
         e.preventDefault();
         //TODO : Make sure we call
         //callback from parent component
+        //this.props.onFormSubmited(this.state.term);
     };
     render(){
         return(
             <div>
-            <FormControl onSubmit={this.onFormSubmit}>
+            <form onSubmit={this.props.onFormSubmited(this.state.term)}>
                 <TextField
                 id="filled-basic"
                 // className={classes.textField}
@@ -23,7 +26,7 @@ class SearchBar extends React.Component{
                 value = {this.state.term}
                 onChange = {this.onInputChange}
                 />
-            </FormControl>
+            </form>
             </div>
         )
     }
